@@ -2,6 +2,7 @@ const Contact = require("../../models/Contact");
 module.exports = async (req, res) => {
   try {
     let { contactId } = req.params;
+    
     await Contact.findByIdAndUpdate(contactId, {
       $set: {
         ...req.body,

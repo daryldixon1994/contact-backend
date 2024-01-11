@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
     let { contactName, phone, email, address } = req.body;
     let { id } = req.user;
     const uploader = async (path) => await cloudinary.uploads(path, "uploads");
-    console.log(req.file);
+   
     let { path } = req.file;
     const { url } = await uploader(path);
     fs.unlinkSync(path);
