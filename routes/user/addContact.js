@@ -6,10 +6,17 @@ module.exports = async (req, res) => {
     let { contactName, phone, email, address } = req.body;
     let { id } = req.user;
     const uploader = async (path) => await cloudinary.uploads(path, "uploads");
-   
-    let { path } = req.file;
-    const { url } = await uploader(path);
-    fs.unlinkSync(path);
+
+    let urls = [];
+    for (let i = 0; i < req.files.length; i++) {
+      let result = await uploader(req.files[i].path);
+      urls.push(result.url);
+      fs.unlinkSync(req.files[i].path);
+    }
+    // let { path } = file;
+    // const { url } = uploader(path);
+    // fs.unlinkSync(path);
+
     // let imageUrl = `${req.protocol}://${req.headers.host}/uploads/${req.file.filename}`;
 
     let newContact = await new Contact({
@@ -18,7 +25,7 @@ module.exports = async (req, res) => {
       email,
       address,
       userId: id,
-      imageUrl: url,
+      imageUrl: urls,
     });
     console.log(newContact);
     await newContact.save();

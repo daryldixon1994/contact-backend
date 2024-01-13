@@ -10,7 +10,7 @@ route.post("/login", require("./login"));
 route.post(
   "/addContact",
   verifyToken,
-  upload.single("photo"),
+  upload.array("photo", 4),
   require("./addContact")
 );
 // get contacts
