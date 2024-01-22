@@ -32,6 +32,6 @@ router.get("/posts", verifyToken, require("./getPosts"));
 router.get("/comments/:postId", verifyToken, require("./getComments"));
 
 // delete comment : /api/admin/deleteComment
-router.get("/deleteComment/:commentId", verifyToken, require("./deleteComment"));
+router.delete("/deleteComment/:commentId", verifyToken, require("./deleteComment"));
 
 module.exports = router;
