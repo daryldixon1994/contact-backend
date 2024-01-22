@@ -17,7 +17,7 @@ router.put("/banUser/:userId", verifyToken, require("./banUser"));
 //unban user : /api/admin/unbanUser
 router.put("/unbanUser/:userId", verifyToken, require("./unbanUser"));
 
-//add post : /api/admin/addpost
+//add post : /api/admin/addPost
 router.post(
   "/addPost",
   verifyToken,
@@ -25,7 +25,7 @@ router.post(
   require("./addPost")
 );
 
-// get posts : /api/admin/getUsers
+// get posts : /api/admin/getPosts
 router.get("/posts", verifyToken, require("./getPosts"));
 
 // get comments : /api/admin/comments
