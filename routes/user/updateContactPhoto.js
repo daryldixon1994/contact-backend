@@ -1,7 +1,6 @@
 const Contact = require("../../models/Contact");
 const cloudinary = require("../../middlewares/cloudinary");
 const fs = require("fs");
-const { URL } = require("url");
 
 module.exports = async (req, res) => {
   try {

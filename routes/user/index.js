@@ -42,4 +42,9 @@ route.put(
   require("./updatePhoto")
 );
 
+// add comment
+route.post("/addComment/:postId", verifyToken, require("./addComment"));
+
+// get comments
+route.get("/getComments/:postId", verifyToken, require("./getComments"));
 module.exports = route;
